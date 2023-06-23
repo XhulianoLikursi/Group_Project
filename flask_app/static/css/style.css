@@ -128,7 +128,7 @@
 
 #map {
     height: 400px;
-    width: 300px;
+    width: 380px;
     margin-right: 50px;
   }
   .block {
@@ -172,3 +172,7 @@
         box-shadow: 0 0 0 0.2rem rgba(24, 247, 20, 0.25);
     } 
 
+ .MapS{
+    height: 30px;
+    width: 380px;
+}

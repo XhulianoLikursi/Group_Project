@@ -33,7 +33,6 @@ def register():
         flash('You have some errors! Fix them to sign Up', 'registrationFailed')
         return redirect(request.referrer)
 
-    # line- i know for sure that my validate_user was true. User had all the required info
     data = {
         'first_name': request.form['first_name'],
         'last_name': request.form['last_name'],

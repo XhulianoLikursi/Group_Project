@@ -22,9 +22,9 @@ app.config['MAX_CONTENT_LENGTH'] = 20 * 1024 * 1024
 
 
 # Set up your OpenAI API credentials
-openai.api_key = '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'
+openai.api_key = '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'
 
-#Check if the format is right
+
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
@@ -51,13 +51,10 @@ def createPost():
             flash('Image is required!', 'post')
             return redirect(request.referrer)
         image = request.files['image']
-        # IMAGE
-        # 2  Controll if it is in the correct format 
+
         if not allowed_file(image.filename):
             flash('Image should be in png, jpg. jpeg format!', 'postImage')
             return redirect(request.referrer)
-  
-        # 3  ADD Timestamp to use as name to avaid same names on uploaded files
 
         if image and allowed_file(image.filename):
             filename1 = secure_filename(image.filename)
@@ -66,7 +63,6 @@ def createPost():
             filename1=time
             image.save(os.path.join(app.config['UPLOAD_FOLDER'],filename1)) 
         
-        # 4 - Save it in the db at data 
         data = {
             'name': request.form['name'],
             'description': request.form['description'],
@@ -146,7 +142,7 @@ def updatePost(id):
                     filename1=time
                     image.save(os.path.join(app.config['UPLOAD_FOLDER'],filename1))
                     print(image)
-            # 4 - Save it in the db at data 
+
             data = {
                 'name': request.form['name'],
                 'description': request.form['description'],

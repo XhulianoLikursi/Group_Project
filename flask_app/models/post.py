@@ -24,16 +24,16 @@ class Post:
             return results[0]
         return False
     
-      #READ
+
     @classmethod
     def get_all(cls):
         query = "SELECT posts.*, users.first_name, users.last_name, COUNT(saves.post_id) as num_saves FROM posts LEFT JOIN users ON posts.user_id = users.id LEFT JOIN saves ON posts.id = saves.post_id GROUP BY posts.id ORDER BY created_at DESC;"
-        # make sure to call the connectToMySQL function with the schema you are targeting.
+
         results = connectToMySQL(cls.db_name).query_db(query)
-        # Create an empty list to append our instances of users
+
         posts = []
         if results:
-        # Iterate over the db results and create instances of friends with cls.
+
             for post in results:
                 posts.append(post)
             return posts
